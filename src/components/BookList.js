@@ -5,25 +5,14 @@ import BookShelf from './BookShelf.js'
 
 class BookList extends Component {
     static propTypes = {
-        books: PropTypes.array.isRequired
-    }
-    
-    state =  {
-        shelf: ''
-    }
-
-    updateShelf = () => {
-        
+        books: PropTypes.array.isRequired,
+        handleChangeShelf: PropTypes.func.isRequired
     }
     
     render(){
-        const { books } = this.props
+        const { books, handleChange } = this.props
         console.log(books)
         
-        const currentlyReading=this.props.books.filter((book=>book.shelf==='currentlyReading'))
-        const wantToRead=this.props.books.filter((book=>book.shelf==='wantToRead'))     
-        const readBooks=this.props.books.filter((book=>book.shelf==='read'))
-
         return (
         <div className="list-books">
             <div className="list-books-title">
@@ -32,14 +21,20 @@ class BookList extends Component {
                 <BookShelf
                     books={this.props.books.filter(book=>book.shelf==='currentlyReading')}
                     shelfName="Currently Reading"
+                    handleChange={handleChange}
+
                 />
                 <BookShelf
                     books={this.props.books.filter(book=>book.shelf==='wantToRead')}
                     shelfName="Want to Read"
+                    handleChange={handleChange}
+
                 />
                 <BookShelf
                     books={this.props.books.filter(book=>book.shelf==='read')}
                     shelfName="Read"
+                    handleChange={handleChange}
+
                 />
             </div>
             <div className="open-search">

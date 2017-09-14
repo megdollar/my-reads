@@ -22,7 +22,9 @@ class BooksApp extends Component {
         })
       }
       
-      
+    updateShelf = (book) => {
+        this.setState(()=>({}))
+    }
     //showSearchPage: false
   
 
