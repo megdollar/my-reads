@@ -6,12 +6,12 @@ import BookShelf from './BookShelf.js'
 class BookList extends Component {
     static propTypes = {
         books: PropTypes.array.isRequired,
-        handleChangeShelf: PropTypes.func.isRequired
+        onHandleChange: PropTypes.func.isRequired
     }
     
     render(){
-        const { books, handleChange } = this.props
-        console.log(books)
+        const { books, onHandleChange } = this.props
+        console.log(this.props)
         
         return (
         <div className="list-books">
@@ -21,19 +21,19 @@ class BookList extends Component {
                 <BookShelf
                     books={this.props.books.filter(book=>book.shelf==='currentlyReading')}
                     shelfName="Currently Reading"
-                    handleChange={handleChange}
+                    onHandleChange={onHandleChange}
 
                 />
                 <BookShelf
                     books={this.props.books.filter(book=>book.shelf==='wantToRead')}
                     shelfName="Want to Read"
-                    handleChange={handleChange}
+                    onHandleChange={onHandleChange}
 
                 />
                 <BookShelf
                     books={this.props.books.filter(book=>book.shelf==='read')}
                     shelfName="Read"
-                    handleChange={handleChange}
+                    onHandleChange={onHandleChange}
 
                 />
             </div>
