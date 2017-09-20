@@ -10,7 +10,7 @@ class BookList extends Component {
     }
     
     render(){
-        const { books, onHandleChange } = this.props
+        const { onHandleChange } = this.props
         
         return (
         <div className="list-books">
