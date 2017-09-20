@@ -36,6 +36,7 @@ class BooksApp extends Component {
         )}/>
         <Route path='/search' render={() => (
           <SearchPage
+            onHandleChange={ this.handleChange }
           />
         )}/>
          
