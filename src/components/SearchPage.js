@@ -26,7 +26,9 @@ class SearchPage extends Component {
                     this.setState({results:results})   
                 }
             }              
-         )}      
+         )} else {
+                this.setState({results: []})
+            }      
     }
     
     render(){
@@ -73,6 +75,9 @@ class SearchPage extends Component {
                         ))}             
                       
                       </ol>
+            </div>
+            <div className="back-arrow">
+                <Link to="/">Home</Link>
             </div>
         </div>
         )

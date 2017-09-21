@@ -4,7 +4,7 @@ import React from 'react'
  function BookShelf (props) {           
     return(
             <div className="bookshelf">
-                <h2 className="bookshelf-title">{props.shelfName}</h2>
+                <h2 className="bookshelf-title">{props.shelf}</h2>
                 <div className="bookshelf-books">
 
                     <ol className="books-grid">

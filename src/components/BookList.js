@@ -10,17 +10,17 @@ function BookList (props) {
             <div className="list-books-content">
                 <BookShelf
                     books={props.books.filter(book=>book.shelf==='currentlyReading')}
-                    shelfName="Currently Reading"
+                    shelf="Currently Reading"
                     onHandleChange={props.onHandleChange}
                 />
                 <BookShelf
                     books={props.books.filter(book=>book.shelf==='wantToRead')}
-                    shelfName="Want to Read"
+                    shelf="Want to Read"
                     onHandleChange={props.onHandleChange}
                 />
                 <BookShelf
                     books={props.books.filter(book=>book.shelf==='read')}
-                    shelfName="Read"
+                    shelf="Read"
                     onHandleChange={props.onHandleChange}
                 />
             </div>
