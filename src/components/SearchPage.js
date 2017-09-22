@@ -24,11 +24,8 @@ class SearchPage extends Component {
                 if(!results || results.error){
                     this.setState({results: []})
                 } else {
-                    results.shelf = this.props.books.shelf
-                    if (!this.props.books.shelf){
-                        results.shelf = 'none'
-                    }
-                    this.setState({results:results})   
+                    this.bookShelf(results)
+                    this.setState({results:results}) 
                 }
             }              
          )} else {
@@ -36,7 +33,18 @@ class SearchPage extends Component {
             }      
     }
     
-    
+    bookShelf = (results) => {
+        for (let result of results){
+            for (let book of this.props.books)
+                if (result.id === book.id) {
+                    result.shelf = book.shelf
+                } else {
+                    result.shelf = 'none'
+                }            
+        }
+
+    }
+
     render(){
         const { onHandleChange} = this.props
         const { results } = this.state
@@ -58,7 +66,7 @@ class SearchPage extends Component {
                             <li key={book.id}>
                         <div className="book">
                             <div className="book-top">
-                                <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>
+                                <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url(${book.imageLinks? book.imageLinks.thumbnail : 'http://via.placeholder.com/128x193?text=No%20Cover'})` }}></div>
                                 <div className="book-shelf-changer">
                                     <select value={book.shelf}
                                         onChange={(e) => onHandleChange(book,e.target.value)}>
