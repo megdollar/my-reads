@@ -7,6 +7,7 @@ import * as BooksAPI from '../BooksAPI'
 
 class SearchPage extends Component {
         static propTypes = {
+        books: PropTypes.array,
         onHandleChange: PropTypes.func.isRequired
     }
     
@@ -23,6 +24,10 @@ class SearchPage extends Component {
                 if(!results || results.error){
                     this.setState({results: []})
                 } else {
+                    results.shelf = this.props.books.shelf
+                    if (!this.props.books.shelf){
+                        results.shelf = 'none'
+                    }
                     this.setState({results:results})   
                 }
             }              
@@ -31,8 +36,9 @@ class SearchPage extends Component {
             }      
     }
     
+    
     render(){
-        const { onHandleChange } = this.props
+        const { onHandleChange} = this.props
         const { results } = this.state
         return (
         <div className="search-books">
